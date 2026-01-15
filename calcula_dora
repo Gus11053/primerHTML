@@ -1,0 +1,106 @@
+"""
+Calculadora Simple
+Un proyecto de ejemplo para aprender Python y GitHub
+"""
+
+class Calculadora:
+    """Clase para realizar operaciones matemáticas básicas"""
+    
+    def __init__(self):
+        self.historial = []
+    
+    def sumar(self, a, b):
+        """Suma dos números"""
+        resultado = a + b
+        self.historial.append(f"{a} + {b} = {resultado}")
+        return resultado
+    
+    def restar(self, a, b):
+        """Resta dos números"""
+        resultado = a - b
+        self.historial.append(f"{a} - {b} = {resultado}")
+        return resultado
+    
+    def multiplicar(self, a, b):
+        """Multiplica dos números"""
+        resultado = a * b
+        self.historial.append(f"{a} × {b} = {resultado}")
+        return resultado
+    
+    def dividir(self, a, b):
+        """Divide dos números"""
+        if b == 0:
+            return "Error: No se puede dividir por cero"
+        resultado = a / b
+        self.historial.append(f"{a} ÷ {b} = {resultado}")
+        return resultado
+    
+    def mostrar_historial(self):
+        """Muestra el historial de operaciones"""
+        if not self.historial:
+            print("No hay operaciones en el historial")
+        else:
+            print("\n--- Historial de Operaciones ---")
+            for operacion in self.historial:
+                print(operacion)
+    
+    def limpiar_historial(self):
+        """Limpia el historial de operaciones"""
+        self.historial = []
+        print("Historial limpiado")
+
+
+def menu():
+    """Muestra el menú principal"""
+    calc = Calculadora()
+    
+    while True:
+        print("\n=== CALCULADORA SIMPLE ===")
+        print("1. Sumar")
+        print("2. Restar")
+        print("3. Multiplicar")
+        print("4. Dividir")
+        print("5. Ver historial")
+        print("6. Limpiar historial")
+        print("7. Salir")
+        
+        opcion = input("\nElige una opción: ")
+        
+        if opcion == "7":
+            print("¡Hasta luego!")
+            break
+        
+        if opcion == "5":
+            calc.mostrar_historial()
+            continue
+        
+        if opcion == "6":
+            calc.limpiar_historial()
+            continue
+        
+        if opcion in ["1", "2", "3", "4"]:
+            try:
+                num1 = float(input("Ingresa el primer número: "))
+                num2 = float(input("Ingresa el segundo número: "))
+                
+                if opcion == "1":
+                    resultado = calc.sumar(num1, num2)
+                    print(f"Resultado: {resultado}")
+                elif opcion == "2":
+                    resultado = calc.restar(num1, num2)
+                    print(f"Resultado: {resultado}")
+                elif opcion == "3":
+                    resultado = calc.multiplicar(num1, num2)
+                    print(f"Resultado: {resultado}")
+                elif opcion == "4":
+                    resultado = calc.dividir(num1, num2)
+                    print(f"Resultado: {resultado}")
+            
+            except ValueError:
+                print("Error: Ingresa números válidos")
+        else:
+            print("Opción no válida")
+
+
+if __name__ == "__main__":
+    menu()
