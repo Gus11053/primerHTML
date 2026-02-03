@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda De Los peluditos </title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0f0f1a;
+            color: #e0e0ff;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        /* Contenedor del encabezado con imagen de fondo */
+        .encabezado {
+            position: relative;
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 60px 20px;
+            border-radius: 20px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a2e 0%, #2a2a4a 100%);
+        }
+
+        /* Imagen de fondo detrás del título */
+        .encabezado::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('assent/logo.jpg'); 
+            background-size: cover;
+            background-position: center;
+            opacity: 0.4; /* Transparencia para que se vea el texto */
+            z-index: 0;
+        }
+
+        .encabezado > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contenedor-principal {
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 20px 0 30px;
+            color: #a78bfa;
+            text-align: center;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        }
+
+        .eslogan {
+            font-size: 1.8rem;
+            color: #c4b5fd;
+            margin: -10px 0 0;
+            font-style: italic;
+            text-align: center;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+        }
+
+        .bienvenidos {
+            display: inline-block;
+            animation: mover 5s infinite alternate ease-in-out;
+            white-space: nowrap;
+        }
+
+        @keyframes mover {
+            0%   { transform: translateX(-30vw); }
+            100% { transform: translateX(30vw);  }
+        }
+
+        /* Estilo del menú desplegable */
+        .menu-desplegable {
+            min-width: 220px;
+            flex-shrink: 0;
+        }
+
+        .select-menu {
+            width: 100%;
+            padding: 16px;
+            font-size: 1.25rem;
+            background: #2a2a4a;
+            color: #d1d5db;
+            border: 2px solid #5b21b6;
+            border-radius: 12px;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpolygon points='0,0 12,0 6,12' fill='%23d1d5db'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            transition: all 0.3s;
+        }
+
+        .select-menu:hover {
+            background: #4338ca;
+            border-color: #a78bfa;
+            color: white;
+        }
+
+        .select-menu:focus {
+            outline: none;
+            border-color: #c4b5fd;
+            box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.4);
+        }
+
+        .area-contenido {
+            flex: 1;
+            background: #1a1a2e;
+            padding: 35px;
+            border-radius: 16px;
+            border: 1px solid #4b5563;
+            min-height: 400px;
+            text-align: left;
+            line-height: 1.7;
+        }
+
+        .contenido {
+            display: none;
+        }
+
+        .contenido.mostrar {
+            display: block;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+
+        @media (max-width: 768px) {
+            .contenedor-principal {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .menu-desplegable {
+                width: 100%;
+            }
+            .select-menu {
+                font-size: 1.2rem;
+                padding: 14px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .eslogan {
+                font-size: 1.4rem;
+            }
+            .encabezado {
+                padding: 40px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="encabezado">
+        <h1><span class="bienvenidos">¡Tienda De los Peluditos !</span></h1>
+        <p class="eslogan">No compres, Adopta</p>
+    </div>
+
+    <div class="contenedor-principal">
+
+        <!-- Menú desplegable -->
+        <div class="menu-desplegable">
+            <select class="select-menu" id="menuSelect">
+                <option value="conocenos" selected>Conócenos</option>
+                <option value="mision">Misión</option>
+                <option value="vision">Visión</option>
+                <option value="objetivo">Objetivo</option>
+            </select>
+        </div>
+
+        <!-- Área de contenido -->
+        <div class="area-contenido">
+
+            <div id="conocenos" class="contenido mostrar">
+                <h2>Conócenos</h2>
+                <p>Somos un pequeño proyecto que busca promover el cuidado de las mascotas en todo el mundo y como poder ayudar a nuestros amigos peludos.</p>
+                <p> tambien buscando la solucion para que la gente en el mundo adopte y no compre somos una fundacion nacida de un proyecto en naucalpan de juares.</p>
+                <img src="assent/mascotas 01.jpg" width="400" height="250" alt="Nuestro club">
+            </div>
+
+            <div id="mision" class="contenido">
+                <h2>Misión</h2>
+                <p>Promover el bienestar animal, fomentar la adopción responsable y apoyar proyectos de protección y cuidado de mascotas en todo el mundo.</p>
+                <img src="assent/mascotas 02.jpg" width="400" height="250" alt="Misión">
+            </div>
+
+            <div id="vision" class="contenido">
+                <h2>Visión</h2>
+                <p>Ser una organización reconocida a nivel mundial por su compromiso con el bienestar animal y la promoción de adopciones responsables.</p>
+                <img src="assent/mascotas 03.jpg" width="400" height="250" alt="Visión">
+            </div>
+
+            <div id="objetivo" class="contenido">
+                <h2>Objetivo</h2>
+                <p>Realizar adopciones responsables de mascotas, promover el cuidado y protección animal, y apoyar proyectos de bienestar animal en todo el mundo y ser reconocidos en el mundo.</p>
+                <img src="assent/mascotas 04.jpg" width="400" height="250" alt="Objetivo">
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        const select = document.getElementById('menuSelect');
+        const secciones = document.querySelectorAll('.contenido');
+
+        select.addEventListener('change', () => {
+            const valor = select.value;
+
+            // Ocultar todas las secciones
+            secciones.forEach(sec => sec.classList.remove('mostrar'));
+
+            // Mostrar la seleccionada
+            document.getElementById(valor).classList.add('mostrar');
+        });
+    </script>
+
+</body>
+</html>
